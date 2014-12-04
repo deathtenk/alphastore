@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
+
+gem 'rails-assets-bootstrap'
+gem 'rails-assets-angular'
+gem 'rails-assets-leaflet'
 gem 'faker'
 gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
