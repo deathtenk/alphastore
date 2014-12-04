@@ -4,7 +4,7 @@ class CreateLineItems < ActiveRecord::Migration
       t.belongs_to :order, index: true
       t.belongs_to :product, index: true
       t.integer :quantity, default: 1, null: false
-      t.decimal :price
+      t.decimal :price, default: 0.0
       t.timestamps
     end
   end

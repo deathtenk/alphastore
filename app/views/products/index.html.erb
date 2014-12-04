@@ -1,12 +1,25 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-  </tr>
-  <% for product in @products %>
-  <tr>
-    <td> <%= product.name %> </td>
-    <td> <%= product.price %> </td>
-  </tr>
-  <% end %>
-</table>
+
+<div class="jumbotron">
+  <h1>Betastore!!</h1>
+    <p class="lead"><%= Faker::Hacker.say_something_smart %></p>
+</div>
+
+<% for product in @products %>
+ <div class="media">
+    <a class="media-left" href="#">
+      <%= image_tag product.image_url %>
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= number_to_currency product.price %>
+        <%= product.name %>
+      </h4>
+
+      <div>
+        <%= product.description %>
+      </div>
+      <div>
+        <%= button_to "Add to cart", "#", method: :post, class: 'btn btn-default' %>
+      </div>
+  </div>
+<% end %>

@@ -6,6 +6,20 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to(image_tag("logo.jpg", height: 50), '/')%>
+    </div>
+     <ul class="nav navbar-nav">
+      <li class="active">
+        <%= link_to("Products", products_path) %>
+      </li>
+     </ul>
+  </div>
+</nav>
+
 <body>
 <% if flash[:notice].present? %>
   <div class="alert alert-info" role="alert">

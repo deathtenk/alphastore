@@ -8,11 +8,13 @@
 
 if Rails.env.development?
   Product.delete_all
+
   30.times do
     Product.create(
       name:         Faker::Commerce.product_name,
       price:        Faker::Commerce.price,
-      image_url:    Faker::Avatar.image(nil, "50x50")
+      image_url:    Faker::Avatar.image(nil, "50x50"),
+      description:  Faker::Lorem.paragraph
       )
   end
 end
