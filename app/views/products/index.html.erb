@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  <% for product in @products %>
+  <tr>
+    <td> <%= product.name %> </td>
+    <td> <%= product.price %> </td>
+  </tr>
+  <% end %>
+</table>
