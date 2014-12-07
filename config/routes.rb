@@ -53,7 +53,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  resources :products
+  namespace :admin do
+    get  '/login' => 'logins#new', as: 'logins'
+    post '/login' => 'logins#create'
+    resources :products
+  end
+  resources :products, only: [:show, :index]
   root 'products#index'
 end

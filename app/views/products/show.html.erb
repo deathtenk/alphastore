@@ -1,0 +1,18 @@
+
+<div class="media">
+    <a class="media-right" >
+      <%= image_tag @product.image_url %>
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= number_to_currency @product.price %>
+        <%= @product.name %>
+      </h4>
+
+      <div>
+        <%= @product.description %>
+      </div>
+      <div>
+        <%= button_to "Add to cart", "#", method: :post, class: 'btn btn-default' %>
+      </div>
+  </div>
