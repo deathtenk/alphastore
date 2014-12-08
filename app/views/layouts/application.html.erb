@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Alphastore</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <%=stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track'=>true %>
+    <%=javascript_include_tag 'application', 'data-turbolinks-track'=>true %>
+      <%=csrf_meta_tags %>
 </head>
 
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <%= link_to(image_tag("logo.jpg", height: 50), '/')%>
+
+  <% if flash[:notice].present? %>
+    <div class="alert alert-info" role="alert">
+      <%=flash[:notice] %>
     </div>
-     <ul class="nav navbar-nav">
-      <li class="active">
-        <%= link_to("Products", products_path) %>
-      </li>
-     </ul>
-  </div>
-</nav>
+    <% end %>
 
-<body>
-<% if flash[:notice].present? %>
-  <div class="alert alert-info" role="alert">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
-
-<%= yield %>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+            <h1><%= link_to "Alphastore", root_path %></h1>
+          </div>
+          <div class="col-xs-6 text-right">
+            <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
+          </div>
+        </div>
+        <hr>
+        <%=yield %>
+      </div>
 
 </body>
+
 </html>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -58,6 +59,8 @@ Rails.application.routes.draw do
     post '/login' => 'logins#create'
     resources :products
   end
+  resource :cart, only: [:show, :new, :create]
+  resources :line_items, only: [:create, :update, :destroy]
   resources :products, only: [:show, :index]
-  root 'products#index'
+  root to: 'products#index'
 end

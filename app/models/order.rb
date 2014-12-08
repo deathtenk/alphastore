@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   before_save :update_subtotal
 
   def subtotal
-    line_items.collect { |li| li.valid? ? (li.quantity * li.product.price) : 0 }.sum
+    line_items.collect { |li| li.quantity * li.price}.sum
   end
 
   private
@@ -16,5 +16,4 @@ class Order < ActiveRecord::Base
   def update_subtotal
     self[:subtotal] = subtotal
   end
-
 end

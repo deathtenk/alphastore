@@ -1,0 +1,12 @@
+
+
+// a javascript response to an item being added to a cart
+// useful for doing javascripty things in the future for
+// speedy responsiveness
+
+<% if @order.errors.any? || @line_item.errors.any? %>
+alert("Invalid.")
+<% else %>
+$(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
+<% end %>
+
