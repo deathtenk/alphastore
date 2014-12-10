@@ -8,6 +8,7 @@
 
 if Rails.env.development?
   Product.delete_all
+  Order.delete_all
 
   30.times do
     Product.create(
@@ -17,10 +18,10 @@ if Rails.env.development?
       description:  Faker::Lorem.paragraph
       )
   end
-
-  OrderStatus.delete_all
-  OrderStatus.create! id: 1, name: "In Progress"
-  OrderStatus.create! id: 2, name: "Placed"
-  OrderStatus.create! id: 3, name: "Shipped"
-  OrderStatus.create! id: 4, name: "Cancelled"
 end
+
+OrderStatus.delete_all
+OrderStatus.create! id: 1, name: "In Progress"
+OrderStatus.create! id: 2, name: "Placed"
+OrderStatus.create! id: 3, name: "Shipped"
+OrderStatus.create! id: 4, name: "Cancelled"

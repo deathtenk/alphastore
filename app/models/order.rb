@@ -1,4 +1,7 @@
 class Order < ActiveRecord::Base
+  
+  attr_accessor :stripe_token
+
   belongs_to :order_status
   has_many :line_items
   before_create :set_order_status
@@ -16,4 +19,22 @@ class Order < ActiveRecord::Base
   def update_subtotal
     self[:subtotal] = subtotal
   end
+
+  def process
+    customer = Stripe::Customer.create(
+      :email => self.email,
+      :card  => @stripe_token
+    )
+    #binding.pry
+    charge = Stripe::Charge.create(
+      :amount => (self.subtotal * 100).round, # amount in cents, again
+      :customer    => customer.id,
+      :description => 'Rails Stripe customer',
+      :currency    => 'usd'
+    )
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to carts_path
+  end
+
 end
